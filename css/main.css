@@ -75,14 +75,15 @@ a:hover {
 .viewContainer {
 	display: flex;
 	flex-direction: column;
+	position: relative;
 }
 
 .is-loading {
 	position:relative;
-	min-height: 300px;
+	min-height: 600px;
 }
-.is-loading * {
-	display: none;
+.is-loading > * {
+	display: none !important;
 }
 .is-loading:before {
 	content: '';
@@ -96,12 +97,12 @@ a:hover {
 .is-loading:after {
 	content: '	';
 	position: absolute;
-	top:50%;
-	left:50%;
+	top: 200px;
+	left: 50%;
 	width: 50px;
 	height: 50px;
-	border: 1px black solid;
-	border-top-color: rgba(0,0,0,.1);
+	border: 1px #67c1f5 solid;
+	border-top-color: #67c1f533;
 	z-index: 2;
 	border-radius: 50%;
 	animation: rotate .5s linear infinite;
