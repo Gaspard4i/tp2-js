@@ -16,9 +16,13 @@ Voici donc ce que l'on vous demande :
 2. **Changez l'ordre d'affichage selon la valeur sélectionnée dans la liste déroulante "ordering" :**
 	- **"Tri par note"** : les résultats doivent s'afficher par ordre de note metacritic décroissante (_la meilleure note en premier_)
 	- **"Tri par date de sortie"** : les résultats doivent s'afficher par date de sortie décroissante (_le plus récent en premier_)
-	- **"Tri par pertinence"** : les résultats doivent s'afficher dans l'ordre initial du tableau tel qu'il se trouvait au chargement de la page (_NB : attention souvenez vous du TP1 : la méthode `sort` **modifie le tableau sur lequel on l'appelle**, il faudra en faire une "sauvegarde"/un clone..._)
+	- **"Tri par pertinence"** : les résultats doivent s'afficher dans l'ordre initial du tableau tel qu'il se trouvait au chargement de la page
+> _**NB :** attention souvenez vous du TP1 : la méthode `Array.sort` **modifie le tableau sur lequel on l'appelle** ! ça veut dire qu'une fois trié, il n'est plus possible de récupérer l'ordre initial du tableau. Il faut donc toujours travailler sur une copie/un clone du tableau original avant de le trier !_
+>
+> _Notez qu'il existe aussi depuis ES14/ES2023 une méthode [`Array.toSorted`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toSorted) qui retourne justement une copie triée du tableau d'origine, sans le modifier._
 
 > _**NB :** pour que le tri par note et le tri par date de sortie retournent un ordre différent vous avez le droit de modifier les notes des jeux du tableau data, vous pouvez par exemple passer la note de "The Last of Us Part 2" à 95_
+
 <br/>
 <br/>
 <br/>
