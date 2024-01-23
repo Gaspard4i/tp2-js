@@ -85,7 +85,12 @@
 	background-color: #454d58;
 	color:#fff5;
 }
-.gameList,
+.gameList {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	padding-top: 60px;
+}
 .gameList .results {
 	display: flex;
 	flex-wrap: wrap;
