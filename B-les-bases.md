@@ -82,7 +82,7 @@ Affichez dans la console :
 
 4. **Ajoutez dans la deuxième div du footer de la page** (_en plus du texte déjà présent_) le code HTML suivant :
 	```html
-	 / CSS inspirée de <a href="https://store.steampowered.com/">steam©</a>
+	 / CSS inspirée de <a href="https://store.steampowered.com/">steam</a>
 	```
 
 	<img src="images/readme/innerhtml-footer.png" />

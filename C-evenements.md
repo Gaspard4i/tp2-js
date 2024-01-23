@@ -197,7 +197,7 @@ Dans le fichier `index.html`, inspectez le contenu de la balise `<div class="vie
 
 Vous voyez qu'on a, en plus de la `gameList`, 3 autres balises `<article>` : on en a notamment une pour la page "À PROPOS" (`<article class="about">`) et une autre pour la page "SUPPORT" (`<article class="help">`).
 
-Ce qu'on va faire maintenant c'est modifier notre pour que :
+Ce qu'on va faire maintenant c'est modifier notre code pour que :
 - Seule une des 4 balises `<article>` soit visible à la fois
 - Quand on clique sur un lien du menu, la balise `<article>` correspondante s'affiche et les autres se masquent
 
