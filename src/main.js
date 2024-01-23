@@ -35,7 +35,7 @@ let html = '';
 data.forEach( game  => html += renderGameThumbnail(game) );
 /* avec la méthode reduce on aurait pu éviter de faire un `let` et gagner 1 ligne : */
 // const html = data.reduce((str, game)  => str + renderGameThumbnail(game), '');
-document.querySelector('.gameList').innerHTML = html;
+document.querySelector('.gameList .results').innerHTML = html;
 
 /* Solution des exercices précédents du TP1 : */
 
@@ -66,7 +66,7 @@ document.querySelector('.gameList').innerHTML = html;
 // 	<img src="${url}" />
 // 	<footer>${name}</footer>
 // </a>`;
-// document.querySelector('.gameList').innerHTML = html;
+// document.querySelector('.gameList .results').innerHTML = html;
 
 /* TP1 / D.5. Les chaînes : Affichage dynamique */
 //
@@ -84,7 +84,7 @@ document.querySelector('.gameList').innerHTML = html;
 // // const name = window.prompt('Quel jeu voulez vous ?');
 // const name = 'Mario Kart 8 Deluxe';
 // const html = renderGameThumbnail(name);
-// document.querySelector('.gameList').innerHTML = html;
+// document.querySelector('.gameList .results').innerHTML = html;
 
 /* TP1 / E.2 Manipulation des tableaux */
 //
@@ -101,7 +101,7 @@ document.querySelector('.gameList').innerHTML = html;
 // // data.forEach(name  => html += renderGameThumbnail(name));
 // // const html = data.map( name  => renderGameThumbnail(name)).join('');
 // const html = data.reduce((str, name)  => str + renderGameThumbnail(name), '');
-// document.querySelector('.gameList').innerHTML = html;
+// document.querySelector('.gameList .results').innerHTML = html;
 
 /* TP1 / E.3. Les objets littéraux */
 // const data = [
@@ -188,12 +188,12 @@ on peut les comparer par ordre alphabétique avec localeCompare */
 // });
 //
 // const html = data.reduce((str, game)  => str + renderGameThumbnail(game), '');
-// document.querySelector('.gameList').innerHTML = html;
+// document.querySelector('.gameList .results').innerHTML = html;
 
 /* TP1 / G.3. Système de filtres */
 // const filteredData = data.filter(game => game.metacritic > 93);
 // const filteredData = data.filter(game => game.released.startsWith('2022'));
 // const filteredData = data.filter(game => game.name.split('a').length === 3);
 // const html = filteredData.reduce((str, game)  => str + renderGameThumbnail(game), '');
-// document.querySelector('.gameList').innerHTML = html;
+// document.querySelector('.gameList .results').innerHTML = html;
 
