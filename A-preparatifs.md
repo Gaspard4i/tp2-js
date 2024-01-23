@@ -27,7 +27,7 @@ Il va vous servir de base pour ce nouveau TP.
 	- entrez comme **nom d'utilisateur** celui de votre encadrant.e de TP (`@patricia.everaere-caillier`, `@catherine.verbrugge` ou `@thomas.fritsch`)
 	- ... et `"reporter"` comme **rôle**.
 
-3. **Ouvrez ensuite un terminal et récupérez les fichiers de ce TP grâce à Git en clonant votre fork dans un dossier de votre choix** (_dans mon exemple ~/tps-js_) :
+3. **Ouvrez ensuite un terminal et récupérez les fichiers de ce TP grâce à Git en clonant votre fork dans un dossier de votre choix** (_dans mon exemple ~/tps-js/tp2_) :
 	```bash
 	mkdir ~/tps-js
 	git clone https://gitlab.univ-lille.fr/<votre-username>/tp2.git ~/tps-js/tp2
@@ -55,6 +55,12 @@ Il va vous servir de base pour ce nouveau TP.
 	>
 	> **Magique !** 🙌
 
+6. **Avant de vous lancer dans ce TP, prenez 5 à 10 minutes pour lire le code contenu dans le dossier `/src`** et comparez-le avec votre code du précédent TP.
+
+	**C'est important de bien comprendre le code qui vous est fourni car il servira de base à la suite du TP** : si des points ne sont pas clairs interrogez votre encadrant.e de TP !
+
+	**Attention : si vous n'aviez pas eu le temps de terminer le précédent TP**, portez une attention toute particulière aux commentaires présents dans le code et qui correspondent aux exercices intermédiaires du TP précédent.
+
 ## A.2. Configuration de Prettier
 
 <img src="images/readme/header-prettier.jpg" />
@@ -81,7 +87,6 @@ Prettier est un formateur de code automatique qui est le plus populaire à l'heu
 	{
 		"singleQuote": true,
 		"trailingComma": "es5",
-		"endOfLine": "lf",
 		"useTabs": true,
 		"arrowParens": "avoid"
 	}
@@ -92,11 +97,11 @@ Prettier est un formateur de code automatique qui est le plus populaire à l'heu
 	```
 	Avec cette configuration, vos fichiers JS seront maintenant automatiquement formatés à chaque sauvegarde ! Plus besoin de vous tracasser avec les retours à la ligne, les tabulations, les espaces, tout sera géré automatiquement par Prettier !
 
-	> _**NB :** si vous souhaitez en savoir plus sur la liste des configurations possibles, rendez vous sur https://prettier.io/docs/en/options.html_
+	> _**NB :** si vous souhaitez en savoir plus sur la liste des configurations possibles, rendez-vous sur https://prettier.io/docs/en/configuration.html_
 
 ## A.3. Lancement de l'application
 
-Comme dans le précédent TP lancez un serveur HTTP et la compilation du projet **dans deux terminaux côte à côte** ([terminaux splittés](https://code.visualstudio.com/docs/editor/integrated-terminal#_terminal-splitting)) :
+Comme dans le précédent TP lancez un serveur HTTP et la compilation du projet **dans deux terminaux côte à côte** ([terminaux splittés](https://code.visualstudio.com/docs/terminal/basics#_groups-split-panes)) :
 
 1. **Lancez un serveur http** dans un terminal intégré de VSCodium (<kbd>CTRL</kbd>+<kbd>J</kbd> *(PC)* / <kbd>CMD</kbd>+<kbd>J</kbd> *(Mac)*) :
 	```bash
@@ -130,17 +135,17 @@ Ce fichier sert à plusieurs choses et notamment :
 
 	À chaque fois qu'on installe un paquet npm :
 
-	1. le paquet en question se télécharge dans le dossier `node_modules`
+	1. le paquet en question se télécharge dans le dossier `node_modules` (_vous devez normalement voir des dossiers `/node_modules/prettier`, `/node_modules/@babel/core` ou encore `/node_modules/@babel/preset-env` dans votre projet_)
 	2. puis le nom du paquet ainsi que sa version sont automatiquement ajoutés dans le fichier `package.json`.
 
 	> _**NB :** Le dossier **`node_modules` n'est jamais versionné** (c'est en général un dossier relativement volumineux) mais le **`package.json` lui l'est** car il servira de "recette" pour indiquer aux développeurs qui rejoindraient le projet quels sont les paquets nécessaires._
 	>
-	> _En effet, grâce au `package.json`, un nouveau développeur n'a qu'à exécuter la commande `npm install` (sans préciser de nom de paquet) pour installer automatiquement toutes les dépendances du projet (c'est d'ailleurs ce que vous avez fait au début du TP) !_
+	> _En effet, grâce au `package.json`, un nouveau développeur n'a qu'à exécuter la commande `npm install` (sans préciser de nom de paquet) pour installer automatiquement toutes les dépendances du projet (c'est d'ailleurs ce que vous avez fait au début du TP_ 🙂 _) !_
 
 2. **Dans ce fichier on va également pouvoir ajouter des "scripts personnalisés" que l'on pourra lancer à l'aide de la commande `npm run xxxxx`.** C'est cette dernière possibilité que l'on va maintenant exploiter pour nous simplifier la vie dans la suite du TP.
 
 ## A.5. Créer un script de build personnalisé
-Jusque là pour lancer la compilation avec [Babel](https://babeljs.io), nous lancions un des deux commandes suivantes :
+Jusque là pour lancer la compilation avec [Babel](https://babeljs.io), nous lancions une des deux commandes suivantes :
 
 ```bash
 ./node_modules/.bin/babel src -d build
@@ -151,23 +156,25 @@ ou
 ```
 
 Grâce au `package.json` **on va créer des "raccourcis" pour lancer ces commandes plus facilement.**
-1. **Stoppez d'abord la commande "./node_modules/.bin/babel ... --watch ..." que vous aviez lancée au point A.3.2.**
-2. Dans VSCodium, **ouvrez le fichier `package.json`** en tapant <kbd>CTRL</kbd>+<kbd>P</kbd> puis le nom du fichier ( <kbd>Enter</kbd> _pour ouvrir le fichier_)
+
+1. **Stoppez d'abord la commande `./node_modules/.bin/babel ... --watch ...`** que vous aviez lancée au point A.3.2. (<kbd>CTRL</kbd>+<kbd>C</kbd>)
+2. Dans VSCodium, **ouvrez le fichier `package.json`** en tapant <kbd>CTRL</kbd>+<kbd>P</kbd> puis le nom du fichier (<kbd>Enter</kbd> _pour ouvrir le fichier_)
 3. **Localisez la section "scripts" du fichier**. Elle doit ressembler à :
 	```json
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	```
-4. **Cette section permet d'indiquer des tâches qui pourront être lancées à l'aide de la commande `npm run <nom-du-script>`.** Par défaut le `package.json` contient une tâche `"test"`. Lancez donc ce script `"test"` en tapant :
+4. **Cette section permet d'ajouter des tâches qui pourront être lancées à l'aide de la commande `npm run <nom-du-script>`.** Par défaut le `package.json` contient une tâche `"test"`. Lancez donc ce script `"test"` en tapant :
 	```bash
 	npm run test
 	```
-	Vous verrez la commande `"echo \"Error: no test specified\" && exit 1"` s'exécuter dans le terminal :
+	Vous verrez alors la commande `"echo \"Error: no test specified\" && exit 1"` s'exécuter dans le terminal :
 
 	<img src="images/readme/npm-run-test.gif" />
 
-	`"test"` est donc une sorte d'**alias**, de **"raccourci"**, permettant de lancer une commande plus complexe.
+	`"test"` est donc une sorte d'**alias**, de **"raccourci"**, permettant de lancer une commande plus complexe grâce à [`npm run` (_doc_)](https://docs.npmjs.com/cli/v9/using-npm/scripts?v=true#npm-run-user-defined).
+
 5. **Ajoutez maintenant dans le `package.json` un nouveau script qu'on appellera "build"** et qui permettra de lancer la compilation Babel :
 	```json
 	"scripts": {
@@ -175,7 +182,7 @@ Grâce au `package.json` **on va créer des "raccourcis" pour lancer ces command
 		"build": "babel src -d build"
 	},
 	```
-	> _**NB :** Vous noterez que **le chemin `./node_modules/.bin/`** que l'on utilisait jusque là dans notre commande de compilation **n'est ici plus nécessaire** : en effet, comme l'on se trouve dans un script npm, node va aller chercher les exécutables directement dans le dossier `./node_modules/.bin/`, plus besoin donc de le préciser !_
+	> _**NB :** Vous noterez que **le chemin `./node_modules/.bin/`** que l'on utilisait jusque là dans notre commande **n'est plus nécessaire** : en effet, comme l'on se trouve dans un script "npm", node va aller automatiquement chercher les exécutables directement dans le dossier `./node_modules/.bin/`, plus besoin donc de le préciser !_
 
 6. **Lancez la commande `npm run build`** et constatez avec émerveillement que la compilation babel se lance !
 
