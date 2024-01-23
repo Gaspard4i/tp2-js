@@ -10,8 +10,8 @@
   "homepage": "https://gitlab.univ-lille.fr/js",
   "license": "ISC",
   "devDependencies": {
-    "@babel/cli": "^7.20.7",
-    "@babel/core": "^7.20.12",
-    "@babel/preset-env": "^7.20.2"
+    "@babel/cli": "^7.23.4",
+    "@babel/core": "^7.23.7",
+    "@babel/preset-env": "^7.23.8"
   }
 }
