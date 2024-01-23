@@ -41,56 +41,36 @@ link.addEventListener('click', handleClick); // écoute l'événement
 **On peut soit générer du code HTML entièrement en JS et l'injecter dans la page (_comme on le fait déjà pour la liste des jeux_) soit se contenter d'afficher/masquer des portions de la page déjà présentes dans le code html.** \
 **C'est cette deuxième technique que l'on va maintenant travailler en ajoutant à notre application un formulaire de recherche.**
 
-1. **Dans le fichier `index.html`, localisez la balise suivante :**
+1. **Dans le fichier `index.html`, localisez la balise `gameList` :**
 	```html
-	<article class="gameList"></article>
+	<article class="gameList">
+		<header class="searchBar"></header>
+		<section class="results"></section>
+	</article>
 	```
-	C'est cette balise dans laquelle on affiche la liste des jeux à l'aide de la ligne du `main.js` :
+	C'est cette balise qui contient la section (_de classe `"results"`_) dans laquelle on affiche la liste des jeux grâce à la ligne du `main.js` :
 	```js
-	document.querySelector('.gameList').innerHTML = html;
+	document.querySelector('.gameList .results').innerHTML = html;
 	```
 
-	Ce qu'on va faire, c'est modifier le code HTML de cette balise de façon à avoir dedans à la fois la liste des jeux mais aussi, en plus, un mini formulaire de recherche.
+	Ce qu'on va faire, c'est modifier le code HTML de la balise `gameList` de façon à avoir dedans à la fois la liste des jeux mais aussi, en plus, un mini formulaire de recherche :
 
 	<img src="images/readme/searchform-final.png">
 
-	Ajoutez à l'**INTERIEUR** de cette balise `<article class="gameList">` le code HTML suivant (_à la main, en "dur" dans le fichier `index.html`, pas en JS !_) :
+	Ajoutez à l'**INTERIEUR** de la balise `<header class="searchBar"></header>` le code HTML suivant (_à la main, en "dur" dans le fichier `index.html`, pas en JS !_) :
 	```html
-	<header class="searchBar">
-		<button class="toggleSearchButton">Rechercher</button>
-		<form class="searchForm" style="display: none;">
-			<input type="text" name="search" placeholder="Nom du jeu"/>
-			<select name="ordering">
-				<option value="">Tri par pertinence</option>
-				<option value="-metacritic">Tri par note</option>
-				<option value="-released">Tri par date de sortie</option>
-			</select>
-			<button type="submit">Filtrer</button>
-		</form>
-	</header>
-	<section class="results"></section>
+	<button class="toggleSearchButton">Rechercher</button>
+	<form class="searchForm" style="display: none;">
+		<input type="text" name="search" placeholder="Nom du jeu"/>
+		<select name="ordering">
+			<option value="">Tri par pertinence</option>
+			<option value="-metacritic">Tri par note</option>
+			<option value="-released">Tri par date de sortie</option>
+		</select>
+		<button type="submit">Filtrer</button>
+	</form>
 	```
-
-	On a rajouté dans la balise `gameList` un `<header>` et une `<section class="results">`, mais si vous affichez la page dans le navigateur, rien n'a changé, le formulaire n'apparaît pas :
-
-	<img src="images/readme/gamelist.png">
-
-	Est-ce que vous avez une idée de pourquoi ? Inspectez le code html généré dans les devtools du navigateur pour voir si le formulaire se trouve toujours là ou pas...
-
-	<br/>
-	<br/>
-	<br/>
-
-	En fait l'explication est "simple" : l'instruction `document.querySelector('.gameList').innerHTML = html;` dont on parlait tout à l'heure **ÉCRASE** tout le code HTML qu'on vient de mettre en dur dans le `index.html` et donc elle efface aussi notre formulaire de recherche. 😭
-
-	Pour résoudre ce problème il faut modifier la balise dans laquelle on affiche les jeux : ce ne doit plus être la balise `<article class="gameList">` mais la balise ...
-
-	```html
-	<section class="results"></section>
-	```
-	... qui se trouve dans `gameList`.
-
-	**Corrigez donc le sélecteur passé à `querySelector` pour pointer vers la bonne balise, cette fois le rendu devrait ressembler à ceci :**
+	Si vous rafraîchissez la page, **le rendu devrait ressembler à ceci :**
 
 	<img src="images/readme/searchform-hidden.png">
 
@@ -100,7 +80,7 @@ link.addEventListener('click', handleClick); // écoute l'événement
 	> <button class="toggleSearchButton">Rechercher</button>
 	> ```
 	>
-	> _La balise `<form class="searchForm" style="display: none;">` est en revanche masquée "à cause" du `style="display:none"` qui lui est appliqué._
+	> _La balise `<form class="searchForm" style="display: none;">` est en revanche masquée "à cause" de l'attribut `style="display:none"` qui lui est appliqué._
 	>
 	> On va voir comment l'afficher au clic sur le bouton.
 
