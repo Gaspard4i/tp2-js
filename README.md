@@ -1,6 +1,6 @@
 <img src="images/readme/header.jpg">
 
-## Objectifs
+## 🎯 Objectifs
 - Savoir manipuler la page HTML avec l'API DOM
 - Savoir détecter les actions de l'utilisateur avec les Event
 - Être capable de gérer des formulaires avec JS

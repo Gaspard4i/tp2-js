@@ -27,10 +27,10 @@ Il va vous servir de base pour ce nouveau TP.
 	- entrez comme **nom d'utilisateur** celui de votre encadrant.e de TP (`@patricia.everaere-caillier`, `@catherine.verbrugge` ou `@thomas.fritsch`)
 	- ... et `"reporter"` comme **rôle**.
 
-3. **Ouvrez ensuite un terminal et récupérez les fichiers de ce TP grâce à Git en clonant votre fork dans un dossier de votre choix** (_dans mon exemple ~/tps-js/tp2_) :
+3. **Ouvrez ensuite un terminal et récupérez les fichiers de ce TP grâce à Git en clonant votre fork dans un dossier de votre choix** (_dans mon exemple `chemin/vers/votre/workspace/tp2`_) :
 	```bash
-	mkdir ~/tps-js
-	git clone https://gitlab.univ-lille.fr/<votre-username>/tp2.git ~/tps-js/tp2
+	cd chemin/vers/votre/workspace
+	git clone https://gitlab.univ-lille.fr/<votre-username>/tp2.git
 	```
 
 	> _**NB1 :** si ce n'est pas déjà fait, il faut que vous renseigniez un mot de passe dans votre compte gitlab ([`Preferences` > `Password`](https://gitlab.univ-lille.fr/-/profile/password/edit)) pour pouvoir cloner en http_
