@@ -58,18 +58,18 @@ _**Ces rappels étant faits, attaquons nous à la création d'un formulaire de c
 
 2. **Dans le fichier `main.js`, détectez la soumission du formulaire à l'aide des méthodes `querySelector()` et `addEventListener`**. Pour le moment affichez juste un message dans la console.
 
-	> _**NB1 :** Souvenez vous de la méthode `event.preventDefault()` et vérifiez que la soumission du formulaire n'entraîne pas un rechargement de page en utilisant l'onglet "Network"/"Réseau" des devtools_
+	> ℹ️ _Souvenez-vous de la méthode `event.preventDefault()` et vérifiez que la soumission du formulaire n'entraîne pas un rechargement de page en utilisant l'onglet "Network"/"Réseau" des devtools_
 
-	> _**NB2 :** Si vous en avez marre de cliquer sur le bouton "SUPPORT" dans le menu à chaque fois que vous rafraîchissez la page, vous pouvez modifier le code de votre `main.js` pour afficher la page "SUPPORT" par défaut !_
+	> 💡 _Si vous en avez marre de cliquer sur le bouton "SUPPORT" dans le menu à chaque fois que vous rafraîchissez la page, vous pouvez modifier le code de votre `main.js` pour afficher la page "SUPPORT" par défaut !_
 
 3. Au submit, **affichez dans la console la valeur saisie par l'utilisateur dans l'input "subject"** (_"Sujet"_).
 
-	> _**NB :** pour sélectionner un champ de formulaire, en général on s'appuie sur le [sélecteur d'attributs](https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors) pour sélectionner le champ en fonction de son attribut `name="..."` (comme dans l'exemple vu au chapitre [D.1. Un peu de théorie](#d1-un-peu-de-théorie))._
+	> ℹ️ _Pour sélectionner un champ de formulaire, en général on s'appuie sur le [sélecteur d'attributs](https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors) pour accéder au champ en fonction de son attribut `name="..."` (comme dans l'exemple vu au chapitre [D.1. Un peu de théorie](#d1-un-peu-de-théorie))._
 
 ## D.3. La validation de la saisie
 1. **Si le champ "subject" est vide, affichez un message d'erreur** à l'aide de la fonction [`alert()`](https://developer.mozilla.org/fr/docs/Web/API/Window/alert)
 
-	> _**NB :** dans la vraie vie on ajouterait plutôt un attribut [`required` (mdn)](https://developer.mozilla.org/fr/docs/Web/HTML/Attributes/required) à la balise `<input >`. Ici on fait cette vérification en JS pour s'entraîner, mais ne faites pas ça chez vous !_
+	> ⚠️ _Dans la vraie vie on ajouterait plutôt un attribut [`required` (mdn)](https://developer.mozilla.org/fr/docs/Web/HTML/Attributes/required) à la balise `<input >`. Ici on fait cette vérification en JS pour s'entraîner, mais ne faites pas ça chez vous !_
 
 2. **Faites de même pour le champ "body"** (_"Votre message"_).
 
@@ -92,7 +92,7 @@ _**Ces rappels étant faits, attaquons nous à la création d'un formulaire de c
 
 	Une fois l'email ouvert, videz les 2 champs de saisie pour permettre à l'utilisateur de saisir un nouveau message.
 
-	> _**NB :** pour modifier la valeur d'un champ, sachez que la propriété [`.value`](https://developer.mozilla.org/fr/docs/Web/HTML/Element/Input#value) de l'élément input est accessible aussi en écriture !_
+	> 📖 _Pour modifier la valeur d'un champ, sachez que la propriété [`.value`](https://developer.mozilla.org/fr/docs/Web/HTML/Element/Input#value) de l'élément input est accessible aussi en écriture !_
 
 ## Étape suivante <!-- omit in toc -->
 Pour terminer ce TP, voyons comment exploiter notre formulaire de recherche : [E. Formulaire de recherche](./E-formulaire-recherche.md).

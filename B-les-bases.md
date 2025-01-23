@@ -58,15 +58,18 @@ Affichez dans la console :
 
 1. Affichez dans la console le **titre du troisième jeu** (_la chaîne de caractères_ `"The Last of Us Part 2"`)
 
-	> _**NB :** pour récupérer la **troisième** vignette, souvenez vous que `querySelectorAll()` retourne un tableau et qu'il est possible d'accéder à une cellule précise du tableau à l'aide de l'opérateur `monTableau[ index ]` où `index` est la position de la cellule recherchée._
+	> <details><summary>💡 <em>Besoin d'indices ?</em></summary>
 	>
-	> _Il est aussi posssible pour cet exercice d'utiliser la méthode `querySelector` avec le sélecteur CSS [`nth-of-type` (mdn)](https://developer.mozilla.org/fr/docs/Web/CSS/:nth-of-type)_
+	> _Pour récupérer la **troisième** vignette, souvenez vous que `querySelectorAll()` retourne un tableau et qu'il est possible d'accéder à une cellule précise du tableau à l'aide de l'opérateur `monTableau[ index ]` où `index` est la position de la cellule recherchée._
+	>
+	> _Il est aussi posssible pour cet exercice d'utiliser la méthode `querySelector` avec le sélecteur CSS [`nth-of-type` (mdn)](https://developer.mozilla.org/fr/docs/Web/CSS/:nth-of-type)._
+	> </details>
 
 2. **Dans le fichier `main.js`, ajoutez un titre dans la page :** Si vous regardez le contenu du fichier `index.html` vous remarquerez que dans la balise `<section class="viewContainer">` se trouve une balise `header`. Injectez dans ce `header` (_grâce à la propriété `innerHTML`_) la chaîne de caractères `'MAGASIN'` :
 
 	<img src="images/readme/innerhtml-header.png">
 
-3. Pour que le style (et la [sémantique (_wikipedia_)](https://fr.wikipedia.org/wiki/HTML_s%C3%A9mantique)) du titre de la page soit correct, **encadrez le texte `'MAGASIN'` d'une balise `h1`.**
+3. Pour que le style (et la [sémantique HTML (_wikipedia_)](https://fr.wikipedia.org/wiki/HTML_s%C3%A9mantique)) du titre de la page soit correct, **encadrez le texte `'MAGASIN'` d'une balise `h1`.**
 
 	Le résultat que l'on cherche à obtenir dans le code HTML est :
 
@@ -87,29 +90,40 @@ Affichez dans la console :
 
 	<img src="images/readme/innerhtml-footer.png" />
 
-	> _**NB :** **cet exercice est plus compliqué qu'il n'en a l'air puisque la page contient plusieurs balises `<footer>`** (1 pour chaque jeu et 1 en bas de la page - celle dans laquelle on veut écrire le texte)._
+	> <details><summary>💡 <em>Un coup de main ?</em></summary>
+	>
+	> _**Cet exercice est plus compliqué qu'il n'en a l'air** puisque la page contient plusieurs balises `<footer>` (1 pour chaque jeu + 1 en bas de la page - celle dans laquelle on veut écrire le texte)._
 	>
 	> _Malheureusement il n'y a pas de classe CSS spécifique sur cette balise qui nous permettrait de la distinguer facilement des autres._
 	>
 	> _Par contre il est possible dans votre sélecteur CSS d'utiliser le [sélecteur d'enfants (_mdn)](https://developer.mozilla.org/fr/docs/Web/CSS/Child_combinator) : `>`. En effet, les `footer` des jeux sont tous contenus dans des balises `<a>`, ce qui n'est pas le cas du `footer` de la page qui est le seul a être un enfant direct du `body`..._ 🤔
+	>
+	> 📖 _**Autre rappel :** innerHTML est accessible en écriture ET en lecture !..._
+	> </details>
 
-	> _**Rappel :** innerHTML est accessible en écriture ET en lecture !_
 
 ### B.2.2. getAttribute/setAttribute
 **Les méthodes [`getAttribute()`](https://developer.mozilla.org/fr/docs/Web/API/Element/getAttribute) et [`setAttribute()`](https://developer.mozilla.org/fr/docs/Web/API/Element/setAttribute) de la classe `Element` permettent de lire, d'ajouter ou de modifier des attributs HTML.**
 
-> _**Rappel :** Les **attributs** HTML, ce sont les paires `clé="valeur"` que l'on peut trouver dans les balises ouvrantes (comme `src`, `href`, etc.)._
+> 📖 _**Rappel :** Les **attributs** HTML, ce sont les paires `clé="valeur"` que l'on peut trouver dans les balises ouvrantes (comme `src`, `href`, etc.)._
 
 1. Affichez dans la console **l'url du 2e lien contenu dans le footer** (`"https://www.iut-a.univ-lille.fr/"`)
-2. Dans le fichier `main.js`, toujours à l'aide de `getAttribute/setAttribute`, **ajoutez la classe CSS `"active"`** au premier lien du menu ("MAGASIN")
+2. Dans le fichier `main.js`, toujours à l'aide de `getAttribute/setAttribute`, **ajoutez la classe CSS `"active"`** au premier lien du menu ("MAGASIN").
+
+	> ⚠️ _**Attention** : la classe CSS actuelle doit être conservée !_
 
 	<img src="images/readme/setattribute.png">
 
-	> _**NB :** pour associer plusieurs classes CSS à une seule balise, il suffit de les séparer par un espace à l'intérieur de l'attribut `class`. Pour cet exercice on souhaite donc obtenir le code HTML suivant :_
+	> <details><summary>ℹ️ <em>Pour associer plusieurs classes CSS à une seule balise, ...</em></summary>
+	>
+	> _... il suffit de les séparer par un **espace** à l'intérieur de l'attribut `class`._
+	>
+	> _Pour cet exercice on souhaite donc obtenir le code HTML suivant :_
 	> ```html
 	> <a href="/" class="gameListLink active">
 	> ```
-	> _(Notez l'espace entre "gameListLink" et "active")_
+	> _(Notez l'espace entre "`gameListLink`" et "`active`")_
+	> </details>
 
 
 ## Étape suivante <!-- omit in toc -->

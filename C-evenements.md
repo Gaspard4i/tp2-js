@@ -7,7 +7,7 @@ _**Maintenant que l'on sait sélectionner et modifier des éléments de la page 
 ## Sommaire <!-- omit in toc -->
 - [C.1. Rappels](#c1-rappels)
 - [C.2. Afficher/masquer un élément](#c2-affichermasquer-un-élément)
-- [C.3. Navigation en JS : le menu](#c3-navigation-en-js-le-menu)
+- [C.3. Navigation en JS : le menu](#c3-navigation-en-js--le-menu)
 	- [C.3.1. Détecter le clic](#c31-détecter-le-clic)
 	- [C.3.2. Modifier le titre](#c32-modifier-le-titre)
 	- [C.3.3. Activer le lien cliqué](#c33-activer-le-lien-cliqué)
@@ -75,14 +75,14 @@ link.addEventListener('click', handleClick); // écoute l'événement
 	<img src="images/readme/searchform-hidden.png">
 
 
-	> _**NB:** Vous noterez que seul le bouton avec la "loupe" s'affiche, il s'agit de la balise :_
+	> ℹ️ _Vous noterez que **seul le bouton avec la "loupe" s'affiche** mais pas le reste du formulaire. Il s'agit de la balise :_
 	> ```html
 	> <button class="toggleSearchButton">Rechercher</button>
 	> ```
 	>
 	> _La balise `<form class="searchForm" style="display: none;">` est en revanche masquée "à cause" de l'attribut `style="display:none"` qui lui est appliqué._
 	>
-	> On va voir comment l'afficher au clic sur le bouton.
+	> _On va voir comment l'afficher au clic sur le bouton._
 
 2. **Dans `src/main.js` commencez par détecter le clic sur le bouton "loupe" à l'aide de la méthode `addEventListener`.**
 
@@ -90,11 +90,11 @@ link.addEventListener('click', handleClick); // écoute l'événement
 
 3. **Si vous arrivez bien à détecter le clic, vous pouvez maintenant tenter d'afficher (_toujours au clic sur le bouton_) le formulaire de recherche** à l'aide de la méthode `setAttribute()`.
 
-	> _**NB1 :** Pour afficher une balise qui est en `style="display: none;"`, vous pouvez simplement vider l'attribut style en remplaçant `display: none` par `''` (chaîne vide)._
+	> 💡 _Pour afficher une balise qui est en `style="display: none;"`, vous pouvez simplement vider l'attribut style en remplaçant `display: none` par `''` (chaîne vide)._
 
-	> _**NB2 :** Pour manipuler les styles vous pouvez aussi utiliser la propriété [`myElement.style` (mdn)](https://developer.mozilla.org/en-US/docs/Web/API/CSS_Object_Model/Using_dynamic_styling_information#modify_an_element_style) qui permet d'agir sur l'attribut `style="..."` de manière un peu plus simple qu'avec `setAttribute()`._
+	> ℹ️ _Pour manipuler les styles vous pouvez aussi utiliser la propriété [`myElement.style` (mdn)](https://developer.mozilla.org/en-US/docs/Web/API/CSS_Object_Model/Using_dynamic_styling_information#modify_an_element_style) qui permet d'agir sur l'attribut `style="..."` de manière un peu plus simple qu'avec `setAttribute()`._
 
-	> _**NB3 :** Plus "bourrin" mais qui peut fonctionner aussi dans ce cas là, il existe aussi une méthode [`myElement.removeAttribute()` (mdn)](https://developer.mozilla.org/fr/docs/Web/API/Element/removeAttribute)..._
+	> ℹ️ _Plus "bourrin" mais qui peut fonctionner aussi dans ce cas là, il existe aussi une méthode [`myElement.removeAttribute()` (mdn)](https://developer.mozilla.org/fr/docs/Web/API/Element/removeAttribute)..._
 
 4. **Maintenant que vous arrivez à afficher le formulaire, ce serait pas mal si l'on pouvait, toujours au clic sur le bouton "loupe", masquer à nouveau le formulaire.**
 
@@ -117,13 +117,18 @@ Décomposons un peu le problème
 
 1. **Commencez par détecter le clic sur deuxième lien du menu ("À PROPOS") et au clic, affichez dans la console le texte `"À propos"`.**
 
-	> _Si vous avez une erreur 404 quand vous cliquez sur le lien, pensez que contrairement à l'exercice C.2. où l'on cliquait sur une balise `<button>`, on clique cette fois sur un lien `<a href="...">`. La conséquence c'est que lorsqu'on clique sur le lien le navigateur vous redirige vers l'URL contenue dans son `href`..._
+	> <details><summary>🚧 <em>Vous avez une erreur 404 quand vous cliquez sur le lien ?</em></summary>
+	>
+	> _Si vous avez une erreur 404 quand vous cliquez sur le lien, pensez que contrairement à l'exercice C.2. où l'on cliquait sur une balise `<button>`, on clique cette fois sur un lien `<a href="...">`._
+	>
+	> _La conséquence c'est que lorsqu'on clique sur le lien, le navigateur vous redirige vers l'URL contenue dans son `href`..._
 	>
 	> _On n'aurait pas vu tout à l'heure une méthode pour **éviter ce comportement et dire au navigateur d'ignorer le clic** ???_
+	> </details>
 
 2. **Ajoutez sur le même modèle un écouteur de clic pour les 2 autres liens du menu : "MAGASIN" et "SUPPORT"**
 
-	> _Bien sûr quand on clique sur le lien "MAGASIN" il faut que ce soit "Magasin" et pas "À propos" qui s'affiche dans la console... même chose pour le lien "SUPPORT" !_
+	> ℹ️ _Bien sûr quand on clique sur le lien "MAGASIN" il faut que ce soit "Magasin" et pas "À propos" qui s'affiche dans la console... même chose pour le lien "SUPPORT" !_
 
 3. **Plutôt que d'avoir les chaînes à afficher dans la console en dur (_et donc 3 fonctions de click différentes_), on va optimiser un peu notre code :**
 	- plutôt que d'avoir 3 `querySelector` différents (_1 pour chaque lien_) utilisez plutôt un seul `querySelectorAll` pour récupérer d'un coup tous les liens contenus la balise `<ul class="mainMenu">` et faites une boucle dessus pour écouter le click sur chaque lien
@@ -148,9 +153,12 @@ L'idée maintenant c'est d'ajouter cette classe "active" sur les liens lorsqu'on
 
 1. **Ajoutez la classe CSS "active"** sur la balise `<a>` sur laquelle l'utilisateur a cliqué.
 
-	> _**NB :** Pour simplifier le travail, plutôt que d'utiliser l'instruction `setAttribute('class', ...)` **je vous recommande plutôt la propriété [`element.classList` (mdn)](https://developer.mozilla.org/fr/docs/Web/API/Element/classList) et ses méthodes `element.classList.add()` et `element.classList.remove()`** qui permettent de ne pas se soucier des autres classes CSS déjà présentes sur les balises en plus de la classe `"active"`_
+	> <details><summary>💡 <em>Pour simplifier le travail, plutôt que d'utiliser l'instruction <code>setAttribute('class', ...)</code>...</em></summary>
+	>
+	> _Je vous recommande plutôt **la propriété [`element.classList` (mdn)](https://developer.mozilla.org/fr/docs/Web/API/Element/classList) et ses méthodes `element.classList.add()` et `element.classList.remove()`** qui permettent de ne pas se soucier des autres classes CSS déjà présentes sur les balises en plus de la classe `"active"`._
+	> </details>
 
-2. **enlevez la classe `"active"` sur le précédent lien actif** (de manière à n'avoir qu'un seul lien actif à la fois)
+2. **Enlevez la classe `"active"` sur le précédent lien actif** (_de manière à n'avoir qu'un seul lien actif à la fois_)
 
 <img src="images/readme/menu-active.gif">
 
@@ -188,7 +196,7 @@ Ce qu'on va faire maintenant c'est modifier notre code pour que :
 	<div class="viewContent activeOnly">
 	```
 
-	> _Cette classe CSS est configurée dans le fichier `css/main.css` et permet de masquer toutes les balises `<article>` enfants_
+	> ℹ️ _Cette classe CSS est configurée dans le fichier `css/main.css` et permet de masquer toutes les balises `<article>` enfants_
 
 	Ajoutez aussi du texte dans les autres balises `<article>` pour qu'on ait un contenu qui s'affiche dans la page lorsque tout fonctionnera.\
 	**Toujours en dur dans le fichier `index.html` ajoutez du texte dans ces balises `<article>` :**
@@ -205,7 +213,7 @@ Ce qu'on va faire maintenant c'est modifier notre code pour que :
 
 2. **Pour ré-afficher la gameList, ajoutez maintenant _EN JS_ (_dans le `main.js` donc_) la classe CSS `"active"` sur la balise `<article class="gameList">`.**
 
-	> _**NB :** Comme pour les liens du menu de navigation (cf. [C.3.3. Activer le lien cliqué](#c33-activer-le-lien-cliqué)) **je vous recommande d'utiliser la propriété [`element.classList` (mdn)](https://developer.mozilla.org/fr/docs/Web/API/Element/classList)** et ses méthodes `element.classList.add()` et `element.classList.remove()`_
+	> 💡 _Comme pour les liens du menu de navigation (cf. [C.3.3. Activer le lien cliqué](#c33-activer-le-lien-cliqué)) **je vous recommande d'utiliser la propriété [`element.classList` (mdn)](https://developer.mozilla.org/fr/docs/Web/API/Element/classList)** et ses méthodes `element.classList.add()` et `element.classList.remove()`_
 
 	La gameList est en principe à nouveau visible :
 
@@ -214,7 +222,11 @@ Ce qu'on va faire maintenant c'est modifier notre code pour que :
 3. **Lorsqu'on clique sur un lien du menu de navigation affichez dans la console l'attribut `href` du lien qui a été cliqué**. \
 	Par exemple si l'utilisateur clique sur le lien **"À PROPOS"**, la console doit afficher la chaîne de caractères **`"/about"`** (_l'URL du lien_)
 
-	> _**NB :** vous aurez besoin pour cela de la méthode [`element.getAttribute()` (mdn)](https://developer.mozilla.org/fr/docs/Web/API/Element/getAttribute)_
+	> <details><summary>💡 <em>Un indice ?</em></summary>
+	>
+	> _Vous aurez sans doute besoin de la méthode [`element.getAttribute()` (mdn)](https://developer.mozilla.org/fr/docs/Web/API/Element/getAttribute)_
+	> </details>
+
 
 4. **Maintenant que vous avez récupéré le `href` du lien cliqué, vous devez être capable de trouver la balise `article` qui lui correspond.**
 

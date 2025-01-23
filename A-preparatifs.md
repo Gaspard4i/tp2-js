@@ -19,12 +19,12 @@ Il va vous servir de base pour ce nouveau TP.
 	Pour le `namespace` choisissez de placer le fork dans votre profil utilisateur.\
 	Pour `Visibility Level` sélectionnez le **mode "private"**
 
-	> _**NB :** Comme ce nouveau TP est lui-même un fork du TP précédent, vous êtes obligé.e de passer par le lien que j'ai fourni ci-dessus, le bouton "Fork"/"Créer une divergence" ne fonctionnera pas dans ce cas et vous redirigera bêtement sur votre propre fork du précédent TP._
+	> ⚠️ _Comme ce nouveau TP est lui-même un fork du TP précédent, vous êtes **obligé·e** de passer par le lien que j'ai fourni ci-dessus, le bouton "Fork"/"Créer une divergence" ne fonctionnera pas dans ce cas et vous redirigera bêtement sur votre propre fork du précédent TP._
 
-2. **Ajoutez votre encadrant.e de TP en tant que "reporter" pour qu'il/elle ait accès à votre code :**
+2. **Ajoutez votre encadrant·e de TP en tant que "reporter" pour qu'il/elle ait accès à votre code :**
 	- dans le menu de gauche, cliquez sur **`Manage`** &gt; **`Members`** (`Gestion` &gt; `Membres` _si vous êtes sur la VF de gitlab_)
 	- cliquez sur le bouton en haut à droite **`"Invite members"`** (`Inviter des membres`)
-	- entrez comme **nom d'utilisateur** celui de votre encadrant.e de TP (`@patricia.everaere-caillier`, `@catherine.verbrugge` ou `@thomas.fritsch`)
+	- entrez comme **nom d'utilisateur** celui de votre encadrant·e de TP (`@patricia.everaere-caillier`, `@catherine.verbrugge` ou `@thomas.fritsch`)
 	- ... et `"reporter"` comme **rôle**.
 
 3. **Ouvrez ensuite un terminal et récupérez les fichiers de ce TP grâce à Git en clonant votre fork dans un dossier de votre choix** (_dans mon exemple `chemin/vers/votre/workspace/tp2`_) :
@@ -33,16 +33,25 @@ Il va vous servir de base pour ce nouveau TP.
 	git clone https://gitlab.univ-lille.fr/<votre-username>/tp2.git
 	```
 
-	> _**NB1 :** si ce n'est pas déjà fait, il faut que vous renseigniez un mot de passe dans votre compte gitlab ([`Preferences` > `Password`](https://gitlab.univ-lille.fr/-/profile/password/edit)) pour pouvoir cloner en http_
+	> <details><summary>⚠️ <em>Si vous êtes sous <strong>Windows</strong> attention aux slashs...</em></summary>
+	>
+	> _ici je clone dans le dossier `chemin/vers/votre/workspace/tp2`. **Si vous êtes sous Windows faites attention aux slashs dans le chemin du dossier** : utilisez **Git bash** (qui comprend cette syntaxe) ou si vous tenez vraiment à utiliser **cmd** ou **powershell** pensez à adapter la commande en les remplaçant par des antislash `\` !_
+	> </details>
 
-	> _**NB2 :** ici je clone dans mon dossier `/home/thomas/tps-js/tp2`. **Si vous êtes sous windows faites attention au sens des slashs et au caractère `"~"`** qui représente le dossier de l'utilisateur sur système unix : utilisez **Git bash** (qui comprend cette syntaxe) ou si vous tenez vraiment à utiliser **cmd** ou **powershell** pensez à adapter la commande !_
+	> <details><summary>ℹ️ <em>Si ce n'est pas déjà fait, il faut que vous renseigniez un mot de passe dans votre compte gitlab</em></summary>
+	>
+	> _Rendez-vous dans [`Preferences` > `Password`](https://gitlab.univ-lille.fr/-/profile/password/edit) pour pouvoir cloner en http._
+	> </details>
 
-	> _**NB3 :** si vous préférez **cloner en SSH** pour ne pas avoir à taper votre mot de passe à chaque fois que vous clonerez un TP, renseignez votre clé SSH dans votre [compte utilisateur gitlab](https://gitlab.univ-lille.fr/-/profile/keys) et clonez à partir de cette URL : `git@gitlab-ssh.univ-lille.fr:votre-username/tp2.git`_
+	> <details><summary>ℹ️ <em>Si vous préférez <strong>cloner en SSH</strong>...</em></summary>
+	>
+	> _...pour ne pas avoir à taper votre mot de passe à chaque fois que vous clonerez un TP, renseignez votre clé SSH dans votre [compte utilisateur gitlab](https://gitlab.univ-lille.fr/-/profile/keys) et clonez à partir de cette URL : `git@gitlab-ssh.univ-lille.fr:votre-username/tp2.git`_
+	> </details>
 
 
 4. **Ouvrez le projet dans VSCodium/VSCode** (pour les différentes façon d'ouvrir le projet relisez les [instructions du TP1](https://gitlab.univ-lille.fr/js/tp1/-/blob/main/A-preparatifs.md#a5-ouvrir-le-projet-dans-vscodium) )
 	```bash
-	codium ~/tps-js/tp2
+	codium chemin/vers/votre/workspace/tp2
 	```
 
 5. **Installez les paquets npm nécessaires au projet** notamment le compilateur [Babel](https://babeljs.io).<br>
@@ -51,13 +60,19 @@ Il va vous servir de base pour ce nouveau TP.
 	npm install
 	```
 
-	> _**NB :** Vous noterez qu'on ne précise pas les paquets à installer comme on l'avait fait dans le précédent TP (`npm install @babel/core`, `@babel/cli`, etc.). npm va en effet tous les récupérer **automatiquement** en parcourant le fichier `package.json` et plus particulièrement les sections `"dependencies"` et `"devDependencies"` qui indiquent quels sont les paquets qui ont été installés précédemment._
+	> <details><summary>ℹ️ <em>Pourquoi on ne dit pas à <code>npm install</code> quels sont les paquets qu'on veut installer ?</em></summary>
 	>
+	> _Effectivement jusque là on a toujours utilisé `npm install nom-de-la-lib` quand on voulait installer un paquet en particulier (`npm install @babel/core`, `@babel/cli`, etc.)._
+	>
+	> _Là on ne précise pas les paquets à installer parce que npm va pouvoir les déterminer **automatiquement** grâce à notre fichier `package.json` et plus particulièrement aux sections `"dependencies"` et `"devDependencies"` qui indiquent quels sont les paquets qui ont été installés précédemment._
+	>
+	> _Cette technique permet à une personne qui rejoint le projet d'installer en une seule commande tous les paquets (les dépendances) dont a besoin notre projet (d'où l'importance de le versionner)._ \
 	> **Magique !** 🙌
+	> </details>
 
 6. **Avant de vous lancer dans ce TP, prenez 5 à 10 minutes pour lire le code contenu dans le dossier `/src`** et comparez-le avec votre code du précédent TP.
 
-	**C'est important de bien comprendre le code qui vous est fourni car il servira de base à la suite du TP** : si des points ne sont pas clairs interrogez votre encadrant.e de TP !
+	**C'est important de bien comprendre le code qui vous est fourni car il servira de base à la suite du TP** : si des points ne sont pas clairs interrogez votre encadrant·e de TP !
 
 	**Attention : si vous n'aviez pas eu le temps de terminer le précédent TP**, portez une attention toute particulière aux commentaires présents dans le code et qui correspondent aux exercices intermédiaires du TP précédent.
 
@@ -97,7 +112,7 @@ Prettier est un formateur de code automatique qui est le plus populaire à l'heu
 	```
 	Avec cette configuration, vos fichiers JS seront maintenant automatiquement formatés à chaque sauvegarde ! Plus besoin de vous tracasser avec les retours à la ligne, les tabulations, les espaces, tout sera géré automatiquement par Prettier !
 
-	> _**NB :** si vous souhaitez en savoir plus sur la liste des configurations possibles, rendez-vous sur https://prettier.io/docs/en/configuration.html_
+	> ℹ️ _Si vous souhaitez en savoir plus sur la liste des configurations possibles, rendez-vous sur https://prettier.io/docs/en/configuration.html_
 
 ## A.3. Lancement de l'application
 
@@ -119,7 +134,12 @@ Comme dans le précédent TP lancez un serveur HTTP et la compilation du projet 
 
 	<img src="images/readme/screen-00.png" >
 
-	> _**NB : Si la page ne s'affiche pas correctement**, vérifiez que vous avez bien lancé le serveur http dans le dossier du projet, c'est à dire celui où se trouve le fichier `index.html`. Puis vérifiez dans la `Console` ou dans l'onglet `Sources` (Chrome) ou `Debugger` (Firefox) qu'l n'y a pas d'erreur JS lorsque la page se charge._
+	> <details><summary>🚧 <em>La page ne s'affiche pas correctement ?</em></summary>
+	>
+	> _Vérifiez que vous avez bien lancé votre serveur Node avec npx dans **le bon dossier** (c'est-à-dire celui où se trouve le fichier `index.html`)._
+	>
+	> _Vérifiez aussi dans la `Console` ou dans l'onglet `Sources` (Chrome) ou `Debugger` (Firefox) qu’il n'y a pas d'erreur JS lorsque la page se charge._
+	> </details>
 
 
 ## A.4. Le fichier `package.json`
@@ -133,14 +153,20 @@ Ce fichier sert à plusieurs choses et notamment :
 	- `@babel/preset-env`
 	- `prettier`
 
+
 	À chaque fois qu'on installe un paquet npm :
 
-	1. le paquet en question se télécharge dans le dossier `node_modules` (_vous devez normalement voir des dossiers `/node_modules/prettier`, `/node_modules/@babel/core` ou encore `/node_modules/@babel/preset-env` dans votre projet_)
+	1. le paquet en question se télécharge dans le dossier `node_modules` (_vous devez normalement voir un dossier `/node_modules/vite` dans votre projet_)
 	2. puis le nom du paquet ainsi que sa version sont automatiquement ajoutés dans le fichier `package.json`.
 
-	> _**NB :** Le dossier **`node_modules` n'est jamais versionné** (c'est en général un dossier relativement volumineux) mais le **`package.json` lui l'est** car il servira de "recette" pour indiquer aux développeurs qui rejoindraient le projet quels sont les paquets nécessaires._
+	> <details><summary>⚠️ <em>Le dossier <code>node_modules</code> n'est <strong>JAMAIS</strong> versionné...</em></summary>
 	>
-	> _En effet, grâce au `package.json`, un nouveau développeur n'a qu'à exécuter la commande `npm install` (sans préciser de nom de paquet) pour installer automatiquement toutes les dépendances du projet (c'est d'ailleurs ce que vous avez fait au début du TP_ 🙂 _) !_
+	> _En effet c'est en général un dossier relativement volumineux et plein de tout petits fichiers._
+	>
+	> _Par contre le fichier **`package.json` lui doit être versionné** car il servira de "recette" pour indiquer aux prochaines personnes qui rejoindront le projet quels sont les paquets nécessaires._
+	>
+	> _En effet, grâce au `package.json`, on n'a qu'à exécuter la commande `npm install` (sans préciser de nom de paquet) pour installer automatiquement toutes les dépendances du projet (c'est d'ailleurs ce qu'on a fait au début de ce TP_ 🙂 _) !_
+	> </details>
 
 2. **Dans ce fichier on va également pouvoir ajouter des "scripts personnalisés" que l'on pourra lancer à l'aide de la commande `npm run xxxxx`.** C'est cette dernière possibilité que l'on va maintenant exploiter pour nous simplifier la vie dans la suite du TP.
 
@@ -155,10 +181,10 @@ ou
 ./node_modules/.bin/babel src -d build --verbose --watch --source-maps
 ```
 
-Grâce au `package.json` **on va créer des "raccourcis" pour lancer ces commandes plus facilement.**
+Grâce au `package.json` on va créer **des "raccourcis"** pour lancer ces commandes plus facilement.
 
 1. **Stoppez d'abord la commande `./node_modules/.bin/babel ... --watch ...`** que vous aviez lancée au point A.3.2. (<kbd>CTRL</kbd>+<kbd>C</kbd>)
-2. Dans VSCodium, **ouvrez le fichier `package.json`** en tapant <kbd>CTRL</kbd>+<kbd>P</kbd> puis le nom du fichier (<kbd>Enter</kbd> _pour ouvrir le fichier_)
+2. **Dans VSCodium, ouvrez le fichier `package.json`** en tapant <kbd>CTRL</kbd>+<kbd>P</kbd> puis le nom du fichier (<kbd>Enter</kbd> _pour ouvrir le fichier_)
 3. **Localisez la section "scripts" du fichier**. Elle doit ressembler à :
 	```json
 	"scripts": {
@@ -182,22 +208,30 @@ Grâce au `package.json` **on va créer des "raccourcis" pour lancer ces command
 		"build": "babel src -d build"
 	},
 	```
-	> _**NB :** Vous noterez que **le chemin `./node_modules/.bin/`** que l'on utilisait jusque là dans notre commande **n'est plus nécessaire** : en effet, comme l'on se trouve dans un script "npm", node va aller automatiquement chercher les exécutables directement dans le dossier `./node_modules/.bin/`, plus besoin donc de le préciser !_
+	> ℹ️ _Vous noterez que **le chemin `./node_modules/.bin/`** que l'on utilisait jusque là dans notre commande **n'est plus nécessaire** : en effet, comme l'on se trouve dans un script "npm", node va aller automatiquement chercher les exécutables directement dans le dossier `./node_modules/.bin/`, plus besoin donc de le préciser !_
 
 6. **Lancez la commande `npm run build`** et constatez avec émerveillement que la compilation babel se lance !
 
 	<img src="images/readme/npm-run-build.gif" />
 
-	> _**NB :** Si la compilation ne se lance pas, plusieurs raisons sont possibles :_
+	> <details><summary>🚧 <em>La compilation ne fonctionne pas ?</em></summary>
+	>
+	> _Si la compilation ne se lance pas, plusieurs raisons sont possibles :_
 	> - _soit Babel n'est pas correctement installé,_
-	> - _soit la section "scripts" n'est pas correctement formatée (pensez qu'il s'agit d'un fichier JSON, par conséquent l'oubli d'une **virgule** entre chaque script ou au contraire l'ajout d'une virgule à la fin du dernier script, sont considérés comme des **erreurs** de syntaxe)._
+	> - _soit la section "scripts" n'est pas correctement formatée (pensez qu'il s'agit d'un fichier JSON, par conséquent l'oubli d'une **virgule** entre chaque script ou au contraire l'ajout d'une virgule à la fin du dernier script, sont considérés comme des **erreurs** de syntaxe_ 👀 _)_
+	> </details>
 
 7. **Ajoutez un nouveau script nommé `"watch"`** qui permettra de lancer la commande :
 	```bash
 	./node_modules/.bin/babel src -d build --verbose --watch --source-maps
 	```
 
-	> _**NB :** Inspirez-vous de la commande que l'on a tapée pour le "build" : comme on est dans un script npm, il y a moyen de simplifier la commande ! Si vous ne voyez pas où je veux en venir, relisez donc le **NB** du point A.5.5. ..._
+	> <details><summary>💡 <em>Un conseil : inspirez-vous de ce qu'on a fait pour la commande <code>build</code>...</em></summary>
+	>
+	> _Vous remarquerez normalement qu'il y a moyen de simplifier la commande qu'on met dans le script !_
+	>
+	> _Si vous ne voyez pas où je veux en venir, relisez donc la petite note ℹ️ du point A.5.5. ..._
+	> </details>
 
 	Lancez la commande `npm run watch` dans votre terminal et vérifiez que lorsque vous modifiez le fichier `src/main.js`, le fichier `build/main.js` est bien mis automatiquement à jour.
 
