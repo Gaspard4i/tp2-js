@@ -132,14 +132,15 @@ Comme dans le précédent TP lancez un serveur HTTP et la compilation du projet 
 
 	Le résultat attendu est le suivant :
 
-	<img src="images/readme/screen-00.png" >
-
 	> <details><summary>🚧 <em>La page ne s'affiche pas correctement ?</em></summary>
 	>
 	> _Vérifiez que vous avez bien lancé votre serveur Node avec npx dans **le bon dossier** (c'est-à-dire celui où se trouve le fichier `index.html`)._
 	>
 	> _Vérifiez aussi dans la `Console` ou dans l'onglet `Sources` (Chrome) ou `Debugger` (Firefox) qu’il n'y a pas d'erreur JS lorsque la page se charge._
 	> </details>
+
+	<img src="images/readme/screen-00.png" >
+
 
 
 ## A.4. Le fichier `package.json`
@@ -159,13 +160,18 @@ Ce fichier sert à plusieurs choses et notamment :
 	1. le paquet en question se télécharge dans le dossier `node_modules` (_vous devez normalement voir un dossier `/node_modules/vite` dans votre projet_)
 	2. puis le nom du paquet ainsi que sa version sont automatiquement ajoutés dans le fichier `package.json`.
 
-	> <details><summary>⚠️ <em>Le dossier <code>node_modules</code> n'est <strong>JAMAIS</strong> versionné...</em></summary>
+	> <details><summary>⚠️ <em>Le fichier <code>package.json</code> est un fichier à commit dans git !</em></summary>
+	>
+	> _C'est important car il servira de "recette" pour indiquer aux prochaines personnes qui rejoindront le projet quels sont les paquets nécessaires._
+	>
+	> _En effet, grâce au `package.json`, on n'a qu'à exécuter la commande `npm install` (sans préciser de nom de paquet) pour installer automatiquement toutes les dépendances du projet (c'est d'ailleurs ce qu'on a fait au début de ce TP_ 🙂 _) !_
+	> </details>
+
+	> <details><summary>⚠️ <em>Par contre le dossier <code>node_modules</code> ne doit <strong>JAMAIS</strong> être versionné...</em></summary>
 	>
 	> _En effet c'est en général un dossier relativement volumineux et plein de tout petits fichiers._
 	>
-	> _Par contre le fichier **`package.json` lui doit être versionné** car il servira de "recette" pour indiquer aux prochaines personnes qui rejoindront le projet quels sont les paquets nécessaires._
-	>
-	> _En effet, grâce au `package.json`, on n'a qu'à exécuter la commande `npm install` (sans préciser de nom de paquet) pour installer automatiquement toutes les dépendances du projet (c'est d'ailleurs ce qu'on a fait au début de ce TP_ 🙂 _) !_
+	> _En plus de ça, ce dossier peut être intégralement re-généré à partir du `package.json`, aucune utilité donc à le versionner !_
 	> </details>
 
 2. **Dans ce fichier on va également pouvoir ajouter des "scripts personnalisés" que l'on pourra lancer à l'aide de la commande `npm run xxxxx`.** C'est cette dernière possibilité que l'on va maintenant exploiter pour nous simplifier la vie dans la suite du TP.
